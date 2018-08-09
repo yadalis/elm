@@ -1,0 +1,6 @@
+{
+  "appLogs": [
+    { "id":"1","sessionId": "1", "appVersion": "2.0.0" },
+    { "id":"2","sessionId": "2", "appVersion": "2.0.0" }
+  ]
+}

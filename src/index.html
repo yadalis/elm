@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Elm • Players</title>
+</head>
+
+<body>
+  <div id="dashboard-results"></div>
+  
+  <!-- <input type="button" value="Refresh In Process ROs" onclick="refreshPage()" /> -->
+</body>
+<script src="/app.js"></script>
+<script type="text/javascript">
+
+// function mountElmNode() {
+//     var mountNode = document.getElementById('dashboard-results');    
+//     window.Elm.InProcess.embed(mountNode);
+// };
+
+var mountNode = document.getElementById('dashboard-results');    
+    window.Elm.InProcess.embed(mountNode);
+
+// (function mountElmNode() {
+//     var mountNode = document.getElementById('dashboard-results');    
+//     Elm.InProcess.embed(mountNode);
+// })();
+
+
+// var storedState = localStorage.getItem('elm-todo-save');
+// var startingState = storedState ? JSON.parse(storedState) : null;
+// var todomvc = Elm.Todo.fullscreen(startingState);
+// todomvc.ports.setStorage.subscribe(function(state) {
+//     localStorage.setItem('elm-todo-save', JSON.stringify(state));
+// });
+
+//Elm.Main.fullscreen();
+//Elm.Cats.embed(document.getElementById('app'));
+</script>
+
+</html>
