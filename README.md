@@ -52,3 +52,5 @@ https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCf
 
 https://elmlangdemoapp.azurewebsites.net/
 
+Note: Do view-source on the page and download the api.js file to look at the compiled Elm app code and the Elm runtime.
+
