@@ -11,6 +11,6 @@ update msg model =
         RPWebMessages.OnFetchInProcessROs response ->
             ( { model | inProcessROs = response }, Cmd.none )
         RPWebMessages.Roll ->
-             (model, Random.generate RPWebMessages.Refresh (Random.int 1 6))
+            (model, RPWebCommands.startRandomInProcessROsFetch)
         RPWebMessages.Refresh rn ->
             ( { model | ranNumb = rn } , RPWebCommands.fetchInProcessROs )

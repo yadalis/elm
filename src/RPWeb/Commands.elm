@@ -6,6 +6,12 @@ import Json.Decode.Pipeline exposing (decode, required)
 import RPWeb.Msgs as RPWebMessages
 import RPWeb.Models as RPWebModels
 import RemoteData
+import Random
+
+
+startRandomInProcessROsFetch: Cmd RPWebMessages.Msg
+startRandomInProcessROsFetch =
+        Random.generate RPWebMessages.Refresh (Random.int 1 16)
 
 fetchInProcessROs: Cmd RPWebMessages.Msg
 fetchInProcessROs =
@@ -16,7 +22,8 @@ fetchInProcessROs =
 fetchInProcessROsUrl: String
 fetchInProcessROsUrl =
     --"http://localhost:13627/api/repairorder/getinprocess/75"
-    "http://localhost:5000/ros"
+    --"http://localhost:5000/ros"
+    "https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug=="
 
 fetchInProcessROsDecoder: Decode.Decoder (List RPWebModels.InProcessRO)
 fetchInProcessROsDecoder = 
