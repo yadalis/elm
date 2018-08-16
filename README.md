@@ -17,7 +17,8 @@ from the firewall situations.
 
 # Using azure function url to fetch test data from a .json file
 
-Just replace the localhost:5000 url with the below url in commands.elm file and rebuild the code, then you should get the same results! as before
+Just replace the localhost:5000 url with the below url in commands.elm file and rebuild the code, then you should get the same results! as before.
+
 https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug==
 
 # Demo
