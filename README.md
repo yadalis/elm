@@ -6,7 +6,7 @@ This app covers the following Elm Language features: Random generator, 2 level J
 
 # About Elm
 
-   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programmign approach). Please browse src folder for all of the Elm code, but here is a small snippet
+   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programmign approach, where every thing is a function, including DOM elements). Please browse src folder for all of the Elm code, but here is a small snippet
    
       module RPWeb.Views.View exposing (..)
       import Html exposing (..)
