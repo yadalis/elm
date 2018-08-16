@@ -4,6 +4,13 @@
 
 This app covers the following Elm Language features: Random generator, 2 level Jason DECODERS and Webdata/remotedata.
 
+
+# Demo
+
+https://elmlangdemoapp.azurewebsites.net/
+
+Note: Do view-source on the page and download the api.js file to look at the compiled Elm app code and the Elm runtime.
+
 # About Elm
 
    Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programmign approach, where every thing is a function, including DOM elements). Please browse src folder for all of the Elm code, but here is a small snippet
@@ -48,9 +55,4 @@ Just replace the localhost:5000 url with the below url in commands.elm file and 
 
 https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug==
 
-# Demo
-
-https://elmlangdemoapp.azurewebsites.net/
-
-Note: Do view-source on the page and download the api.js file to look at the compiled Elm app code and the Elm runtime.
 
