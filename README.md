@@ -5,7 +5,9 @@
 This app covers the following Elm Language features: Random generator, 2 level Jason DECODERS and Webdata/remotedata.
 
 # Elm setup
-    Once you get this repo downloaded, just running "npm install" should get you going in most cases, but if you are behind the firewall, run the next set of commands individually after disconnecting and connecting to a public network, to escape from the firewall situations.
+Once you get this repo downloaded, just running "npm install" should get you going in most cases, but if you are behind the firewall,
+run the next set of commands individually after disconnecting and connecting to a public network, to escape 
+from the firewall situations.
 
 - elm-package install
 
