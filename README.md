@@ -1,8 +1,8 @@
 # About the app
 
-   This small app built in fairly new SPA language called Elm. Just spins up a json-server to server up a list of repair-orders from a file and then launch the app with webapck dev server (watch files), the webpage displays the list of the repair-orders with a REFRESH button, which pulls the json results with count limited to the RANDOMly generated number.
+   This small app built in fairly new SPA language called Elm. Once the "npm" build starts, it spins up a "json-server" to server up a list of repair-orders from a static .json file and then launch the app with webapck dev server with file-watcher, then webpage displays the list of the repair-orders with a REFRESH button, which pulls the json results with the count limited to the RANDOMly generated number.
 
-This app covers the following Elm Language features: Random generator, 2 level Jason DECODERS and Webdata/remotedata.
+This app covers the following Elm Language features: Random generator, 2 level Jason DECODERS, Webdata/remotedata, data as effects and immutability
 
 
 # Demo
