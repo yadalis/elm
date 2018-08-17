@@ -9,11 +9,17 @@ This app covers the following Elm Language features: Random generator, 2 level J
 
 https://elmlangdemoapp.azurewebsites.net/
 
-Note: Do view-source on the page and download the api.js file to look at the compiled Elm app code and the Elm runtime.
+Note: Do view-source on the page and download the api.js file to look at the compiled Elm app code and the Elm runtime, you can also find the azure function (a REST service develped in node.js/linux on MS azure cloud) url if you search for the word "azure", just to see the 
 
-# About Elm
+# Using azure function url to fetch test data from a .json file
 
-   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programmign approach, where every thing is a function, including DOM elements). Please browse src folder for all of the Elm code, but here is a small snippet
+Just replace the localhost:5000 url with the below url in commands.elm file and rebuild the code, then you should get the same results! as before.
+
+https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug==
+
+# About Elm language (http://www.elm-lang.org/)
+
+   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programming and no-runtime exceptions approach, in Elm, every thing is a pure function, including DOM elements for ex: div is a functions which produces <div> element. Please browse src folder for all of the Elm code files, but here is a small snippet
    
       module RPWeb.Views.View exposing (..)
       import Html exposing (..)
@@ -48,11 +54,5 @@ from the firewall situations.
 - npm install elm-webpack-loader --save-dev
 
   Note: This requires node.js pre-installed.
-
-# Using azure function url to fetch test data from a .json file
-
-Just replace the localhost:5000 url with the below url in commands.elm file and rebuild the code, then you should get the same results! as before.
-
-https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug==
 
 
