@@ -19,7 +19,7 @@ https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCf
 
 # About Elm language (http://www.elm-lang.org/)
 
-   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programming and no-runtime exceptions approach, in Elm, every thing is a pure function, including DOM elements for ex: div is a functions which produces <div> element. Please browse src folder for all of the Elm code files, but here is a small snippet
+   Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programming and no-runtime exceptions approach, in Elm, every thing is a pure function, including DOM elements for ex: div is a functions which produces "<div>" element. Please browse src folder for all of the Elm code files, but here is a small snippet
    
    # view.elm
       module RPWeb.Views.View exposing (..)
