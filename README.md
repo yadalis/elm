@@ -21,6 +21,7 @@ https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCf
 
    Elm is a fairly new language to build SPA (Single page apps), and in my opinion this language beats React.js, Angualar.js or any other SPA language hands down with its unique functional programming and no-runtime exceptions approach, in Elm, every thing is a pure function, including DOM elements for ex: div is a functions which produces <div> element. Please browse src folder for all of the Elm code files, but here is a small snippet
    
+   # view.elm
       module RPWeb.Views.View exposing (..)
       import Html exposing (..)
       import RPWeb.Msgs as RPWebMessages
@@ -44,6 +45,23 @@ https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCf
                       ,RPWebList.view  model -- passing full model instead of just inProcessROs list
               ]
 
+   # update.elm
+      
+      module RPWeb.Update exposing (..)
+      import RPWeb.Msgs as RPWebMessages
+      import RPWeb.Models as RPWebModels
+      import RPWeb.Commands as RPWebCommands
+      import Random
+
+      update : RPWebMessages.Msg -> RPWebModels.Model -> ( RPWebModels.Model, Cmd RPWebMessages.Msg  )
+      update msg model =
+          case msg of
+              RPWebMessages.OnFetchInProcessROs response ->
+                  ( { model | inProcessROs = response }, Cmd.none )
+              RPWebMessages.Roll ->
+                  (model, RPWebCommands.startRandomInProcessROsFetch)
+              RPWebMessages.Refresh rn ->
+                  ( { model | ranNumb = rn } , RPWebCommands.fetchInProcessROs )
 # Elm setup
 Once you get this repo downloaded, just running "npm install" should get you going in most cases, but if you are behind the firewall,
 run the next set of commands individually after disconnecting and connecting to a public network, to escape 
