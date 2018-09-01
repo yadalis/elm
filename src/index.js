@@ -8,7 +8,9 @@
 // Require index.html so it gets copied to dist
 // import './index.html';
 
-window.Elm = require('./RPWeb/InProcess.elm');
+//window.Elm = require('./RPWeb/InProcess.elm');
+
+window.Elm = require('./RPWeb/ActionRequired.elm');
 
 // (function mountElmNode() {
 //     var mountNode = document.getElementById('dashboard-results');    

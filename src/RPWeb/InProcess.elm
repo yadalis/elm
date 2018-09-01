@@ -5,11 +5,11 @@ import RPWeb.Msgs as RPWebMessages
 import RPWeb.Models as RPWebModels
 import RPWeb.Update as RPWebUpdate
 import RPWeb.Views.View as RPWebView
-import RPWeb.Commands as RPWebCommands
+import RPWeb.InProcessCommand as RPWebInProcessCommand
 
 init : ( RPWebModels.InProcessROModel, Cmd RPWebMessages.Msg )
 init =
-    ( RPWebModels.inProcessinitialModel, RPWebCommands.startRandomInProcessROsFetch )
+    ( RPWebModels.inProcessinitialModel, RPWebInProcessCommand.startRandomInProcessROsFetch )
     --( RPWebModels.initialModel, Cmd.none )
 
 subscriptions : RPWebModels.InProcessROModel -> Sub RPWebMessages.Msg

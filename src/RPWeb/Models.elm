@@ -53,7 +53,7 @@ type alias Technician =
 
 type alias InProcessROModel =
     { 
-        inProcessROs : WebData ( List InProcessRO )
+        roList : WebData ( List InProcessRO )
         ,ranNumb: Int
         ,rollMsg: RollMsgs.RollMsg
     }
@@ -61,14 +61,14 @@ type alias InProcessROModel =
 inProcessinitialModel : InProcessROModel
 inProcessinitialModel =
     { 
-        inProcessROs = RemoteData.Loading
+        roList = RemoteData.Loading
         ,ranNumb = 4
         ,rollMsg = RollMsgs.InProcessROsMsg
     }
 
 type alias ActionRequiredROModel =
     { 
-        actionRequiredROs : WebData ( List ActionRequiredRO )
+        roList : WebData ( List ActionRequiredRO )
         ,ranNumb: Int
         ,rollMsg: RollMsgs.RollMsg
     }
@@ -76,7 +76,7 @@ type alias ActionRequiredROModel =
 actionRequiredInitialModel : ActionRequiredROModel
 actionRequiredInitialModel =
     { 
-        actionRequiredROs = RemoteData.Loading
+        roList = RemoteData.Loading
         ,ranNumb = 5
         ,rollMsg = RollMsgs.ActionRequiredROsMsg
     }

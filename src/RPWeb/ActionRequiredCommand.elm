@@ -24,13 +24,13 @@ fetchhActionRequiredUrl =
     --"http://localhost:5000/ros"
     "https://testfuncappsuresh.azurewebsites.net/api/loadInProcessROs?code=kCigay9kCfy2nr0ui7yzI0jDinaC0TiBmBTcBEawoPzPxyNMCbTsug=="
 
-fetchhActionRequiredDecoder: Decode.Decoder (List RPWebModels.InProcessRO)
+fetchhActionRequiredDecoder: Decode.Decoder (List RPWebModels.ActionRequiredRO)
 fetchhActionRequiredDecoder = 
     Decode.list actionRequiredDecoder
           
-actionRequiredDecoder :  Decode.Decoder RPWebModels.InProcessRO
+actionRequiredDecoder :  Decode.Decoder RPWebModels.ActionRequiredRO
 actionRequiredDecoder  =
-    decode RPWebModels.InProcessRO  
+    decode RPWebModels.ActionRequiredRO  
         |> required "repairOrderNumber" Decode.int
         |> required "aggregateRootId" Decode.string
         |> required "customerNumber" Decode.int

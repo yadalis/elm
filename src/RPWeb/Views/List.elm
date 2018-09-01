@@ -49,7 +49,7 @@ rolegend =
 --maybeList : WebData (List RPWebModels.InProcessRO) -> Html RPWebMessages.Msg
 maybeList : RPWebModels.InProcessROModel -> Html RPWebMessages.Msg
 maybeList model =
-    case model.inProcessROs of
+    case model.roList of
         RemoteData.NotAsked ->
             text ""
 

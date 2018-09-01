@@ -1,4 +1,4 @@
-module RPWeb.Commands exposing (..)
+module RPWeb.InProcessCommand exposing (..)
 
 import Http
 import Json.Decode as Decode

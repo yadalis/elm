@@ -6,7 +6,7 @@ import RPWeb.RollMsgs  exposing (RollMsg)
 
 type Msg
     = 
-        OnFetchActionRequiredROs (WebData (List RPWebModels.InProcessRO))
+        OnFetchActionRequiredROs (WebData (List RPWebModels.ActionRequiredRO))
     |   OnFetchInProcessROs (WebData (List RPWebModels.InProcessRO))
     |   Refresh Int
     |   Roll RollMsg
