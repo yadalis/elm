@@ -14,7 +14,7 @@ import RemoteData exposing (WebData)
 --     ( RPWebCommands.fetchInProcessROs )
 
 --view : WebData (List RPWebModels.InProcessRO) -> Html RPWebMessages.Msg
-view : RPWebModels.Model -> Html RPWebMessages.Msg
+view : RPWebModels.InProcessROModel -> Html RPWebMessages.Msg
 view model =
     maybeList model
 
@@ -47,7 +47,7 @@ rolegend =
     ]
 
 --maybeList : WebData (List RPWebModels.InProcessRO) -> Html RPWebMessages.Msg
-maybeList : RPWebModels.Model -> Html RPWebMessages.Msg
+maybeList : RPWebModels.InProcessROModel -> Html RPWebMessages.Msg
 maybeList model =
     case model.inProcessROs of
         RemoteData.NotAsked ->
