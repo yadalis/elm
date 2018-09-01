@@ -21,7 +21,6 @@ page model =
                 [text <| " Total rows: " ++ toString model.ranNumb ]
                 ,button [onClick (RPWebMessages.Roll RollMsgs.InProcessROsMsg) ][text "Refresh in process ro list"]
                 ,button [onClick (RPWebMessages.Roll RollMsgs.ActionRequiredROsMsg) ][text "Refresh action required ro list"]
-                --,div[][text("roll num is " ++ toString model.rollNum)]
                 ,div[] [ (case model.rollMsg of
                                 RollMsgs.InProcessROsMsg ->
                                         text "In Process ROs"

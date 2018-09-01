@@ -17,10 +17,6 @@ update msg model =
             let
                 mdl = { model | rollMsg = rollMsg }
             in
-                -- if (msg == RPWeb.RollMsgs.InProcessROsMsg) then
-                --     ( mdl, RPWebCommands.startRandomInProcessROsFetch )
-                -- else
-                --     ( mdl, RPWebActionRequiredCommand.startRandomActionRequiredROsFetch )
                 case rollMsg of
                     RollMsgs.InProcessROsMsg ->
                         ( mdl, RPWebCommands.startRandomInProcessROsFetch )
@@ -30,10 +26,6 @@ update msg model =
             let
                 mdl = { model | ranNumb = randomNumber }
             in
-                -- if (model.rollMsg == RPWeb.RollMsgs.InProcessROsMsg) then
-                --     ( mdl, RPWebCommands.fetchInProcessROs )
-                -- else
-                --     ( mdl, RPWebActionRequiredCommand.fetchActionRequiredROs )
                 case model.rollMsg of
                     RollMsgs.InProcessROsMsg ->
                         ( mdl, RPWebCommands.fetchInProcessROs )
