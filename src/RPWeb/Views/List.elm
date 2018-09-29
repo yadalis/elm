@@ -5,6 +5,7 @@ import Html.Attributes exposing (..)
 import RPWeb.Msgs as RPWebMessages
 import RPWeb.Models as RPWebModels
 import RemoteData exposing (WebData)
+import Tuple exposing (..)
 
 
 --import Debug exposing (log)
@@ -63,19 +64,28 @@ maybeList model =
             text  <| toString error
 
 
-
-
-    
+ 
 
 buildROstable : List RPWebModels.ActionRequiredRO -> (Html RPWebMessages.Msg)
 buildROstable inProcessRORows =
 
     let
-        
+        -- first approach of combining two lists in to a tuple and then call function which take a tuple
         rOsTableColumnList = 
-            ["Priority","Sev","Priority","B","D","Bay","RO#","Cust#","Customer","Unit","VIN","Status","Updated","Tech# 1","#2","DW","ETC"]
+            ["Priority","Sev","B","D","Bay",  "RO#","Cust#","Customer","Unit","VIN",  "Status","Updated","Tech# 1","#2","DW", "ETC"]
         rOsTableColumnsWidths = 
-            [25,25,25,25,25,75,30,220,35,35,100,75,50,25,75]
+            [25,25,25,25,25, 75,30,220,35,35, 100,0,50,25,75, 75]
+        combinedResult : List (String, Int)
+        combinedResult =
+             (List.map2 (\columnName width -> (columnName, width)) rOsTableColumnList rOsTableColumnsWidths)
+
+        -- second approach is form a list of tuples directly and then call function which take a tuple
+        headerWidthPairs =
+            [ ("Priority", 25), ("Sev", 25), ("B", 25), ("D", 25), ("Bay", 25)
+            , ("RO#", 75), ("Cust#", 30), ("Customer", 220), ("Unit", 35), ("VIN", 35)
+            , ("Status", 100), ("Updated", 0), ("Tech# 1", 75), ("#2", 50), ("DW", 25)
+            , ("ETC", 75)]
+
     in
 
         div [id "searchContainer"]
@@ -85,7 +95,9 @@ buildROstable inProcessRORows =
             ,table [ class "item-list", id "searchList" ]
             [ thead []
                 [ tr []
-                     (List.map buildROsTableColumnHeaders rOsTableColumnList ) 
+                     --(List.map buildROsTableColumnHeaders rOsTableColumnList)
+                     (List.map buildROsTableColumnHeadersV2 combinedResult)
+                     --(List.map buildROsTableColumnHeadersV2 headerWidthPairs)
                     --[ 
                         -- th [ attribute "width" "25px" ]
                         --     [ text "Priority" ]
@@ -126,9 +138,14 @@ buildROstable inProcessRORows =
             ]
     ]
 
-buildROsTableColumnHeaders : String -> Html RPWebMessages.Msg
-buildROsTableColumnHeaders textValue  =
-    th [ attribute "width" ((toString 100) ++ "px") ]
+-- buildROsTableColumnHeaders : String -> Html RPWebMessages.Msg
+-- buildROsTableColumnHeaders textValue  =
+--     th [ attribute "width" ((toString 100) ++ "px") ]
+--                     [ text textValue  ]
+
+buildROsTableColumnHeadersV2 : (String, Int) -> Html RPWebMessages.Msg
+buildROsTableColumnHeadersV2 (textValue, widthValue) =
+    th [ attribute "width" ((toString widthValue) ++ "px") ]
                     [ text textValue  ]
 
 inProcessRORowView :  RPWebModels.ActionRequiredRO -> Html RPWebMessages.Msg
