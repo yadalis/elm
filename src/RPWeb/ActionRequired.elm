@@ -7,18 +7,18 @@ import RPWeb.Update as RPWebUpdate
 import RPWeb.Views.View as RPWebView
 import RPWeb.ActionRequiredCommand as RPWebActionRequiredCommand
 
-init : ( RPWebModels.ActionRequiredROModel, Cmd RPWebMessages.Msg )
+init : ( RPWebModels.ROListModel RPWebModels.ActionRequiredRO, Cmd RPWebMessages.Msg )
 init =
-    ( RPWebModels.actionRequiredInitialModel, RPWebActionRequiredCommand.startRandomActionRequiredROsFetch )
+    ( (RPWebModels.actionRequiredInitialModel), RPWebActionRequiredCommand.startRandomActionRequiredROsFetch )
     --( RPWebModels.initialModel, Cmd.none )
 
-subscriptions : RPWebModels.ActionRequiredROModel -> Sub RPWebMessages.Msg
+subscriptions : (RPWebModels.ROListModel RPWebModels.ActionRequiredRO) -> Sub RPWebMessages.Msg
 subscriptions model =
     Sub.none
 
 -- MAIN
 
-main : Program Never RPWebModels.ActionRequiredROModel RPWebMessages.Msg
+main : Program Never (RPWebModels.ROListModel RPWebModels.ActionRequiredRO) RPWebMessages.Msg
 main =
     program
         { init = init

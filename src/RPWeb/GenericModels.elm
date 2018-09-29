@@ -1,7 +1,7 @@
-module RPWeb.Models exposing (..)
+module RPWeb.GenericModels exposing (..)
 
 import RemoteData exposing (WebData)
-import RPWeb.RollMsgs as RollMsgs
+--import RPWeb.RollMsgs as RollMsgs
 
 type alias InProcessRO =
     { 
@@ -55,7 +55,7 @@ type alias ROListModel anyType =
     { 
          roList : WebData ( List anyType )
         ,ranNumb: Int
-        ,rollMsg: RollMsgs.RollMsg
+        --,rollMsg: RollMsgs.RollMsg
     }
 
 actionRequiredInitialModel : ROListModel anyType
@@ -63,7 +63,7 @@ actionRequiredInitialModel =
     { 
          roList = RemoteData.Loading
         ,ranNumb = 5
-        ,rollMsg = RollMsgs.ActionRequiredROsMsg
+        --,rollMsg = RollMsgs.ActionRequiredROsMsg
     }
 
 inProcessinitialModel : ROListModel anyType
@@ -71,7 +71,7 @@ inProcessinitialModel =
     { 
         roList = RemoteData.Loading
         ,ranNumb = 8
-        ,rollMsg = RollMsgs.InProcessROsMsg
+        --,rollMsg = RollMsgs.InProcessROsMsg
     }
 
 -- type alias InProcessROModel =

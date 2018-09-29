@@ -6,7 +6,7 @@ import RPWeb.Models as RPWebModels
 import RPWeb.InProcessCommand as RPWebInProcessCommand 
 import RPWeb.ActionRequiredCommand as RPWebActionRequiredCommand
 
-update : RPWebMessages.Msg -> RPWebModels.InProcessROModel -> ( RPWebModels.InProcessROModel, Cmd RPWebMessages.Msg  )
+update : RPWebMessages.Msg -> (RPWebModels.ROListModel RPWebModels.ActionRequiredRO) -> ( (RPWebModels.ROListModel RPWebModels.ActionRequiredRO), Cmd RPWebMessages.Msg  )
 update msg model =
     case msg of
         RPWebMessages.OnFetchInProcessROs response ->

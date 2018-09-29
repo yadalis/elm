@@ -14,7 +14,7 @@ import RemoteData exposing (WebData)
 --     ( RPWebCommands.fetchInProcessROs )
 
 --view : WebData (List RPWebModels.InProcessRO) -> Html RPWebMessages.Msg
-view : RPWebModels.InProcessROModel -> Html RPWebMessages.Msg
+view :  (RPWebModels.ROListModel RPWebModels.ActionRequiredRO) -> Html RPWebMessages.Msg
 view model =
     maybeList model
 
@@ -47,7 +47,7 @@ rolegend =
     ]
 
 --maybeList : WebData (List RPWebModels.InProcessRO) -> Html RPWebMessages.Msg
-maybeList : RPWebModels.InProcessROModel -> Html RPWebMessages.Msg
+maybeList :  (RPWebModels.ROListModel RPWebModels.ActionRequiredRO) -> Html RPWebMessages.Msg
 maybeList model =
     case model.roList of
         RemoteData.NotAsked ->
@@ -62,55 +62,76 @@ maybeList model =
         RemoteData.Failure error ->
             text  <| toString error
 
-buildROstable : List RPWebModels.InProcessRO -> (Html RPWebMessages.Msg)
+
+
+
+    
+
+buildROstable : List RPWebModels.ActionRequiredRO -> (Html RPWebMessages.Msg)
 buildROstable inProcessRORows =
 
-    div [id "searchContainer"]
-     [  
+    let
         
-        rolegend
-        ,table [ class "item-list", id "searchList" ]
-        [ thead []
-            [ tr []
-                [ th [ attribute "width" "25px" ]
-                    [ text "Priority" ]
-                , th [ attribute "width" "25px" ]
-                    [ text "Sev"               ]
-                , th [ attribute "width" "25px" ]
-                    [ text "B"               ]
-                , th [ attribute "width" "25px" ]
-                    [ text "D"               ]
-                , th [ attribute "width" "25px" ]
-                    [ text "Bay"               ]
-                , th [ attribute "width" "75px" ]
-                    [ text "RO#"               ]
-                , th [ attribute "width" "30px" ]
-                    [ text "Cust#"               ]
-                , th [ attribute "width" "220px" ]
-                    [ text "Customer"               ]
-                , th [ attribute "width" "35px" ]
-                    [ text "Unit"               ]
-                , th [ attribute "width" "35px" ]
-                    [ text "VIN"               ]
-                , th [ attribute "width" "100px" ]
-                    [ text "Status"               ]
-                , th []
-                    [ text "Updated"               ]
-                , th [ attribute "width" "75px" ]
-                    [ text "Tech#1"               ]
-                , th [ attribute "width" "50px" ]
-                    [ text "#2"               ]
-                , th [ attribute "width" "25px" ]
-                    [ text "DW"               ]
-                , th [ attribute "width" "75px" ]
-                    [ text "ETC"               ]
-                ]
-            ]
-        , tbody []  (List.map inProcessRORowView inProcessRORows ) 
-        ]
-   ]
+        rOsTableColumnList = 
+            ["Priority","Sev","Priority","B","D","Bay","RO#","Cust#","Customer","Unit","VIN","Status","Updated","Tech# 1","#2","DW","ETC"]
+        rOsTableColumnsWidths = 
+            [25,25,25,25,25,75,30,220,35,35,100,75,50,25,75]
+    in
 
-inProcessRORowView : RPWebModels.InProcessRO -> Html RPWebMessages.Msg
+        div [id "searchContainer"]
+        [  
+            
+            rolegend
+            ,table [ class "item-list", id "searchList" ]
+            [ thead []
+                [ tr []
+                     (List.map buildROsTableColumnHeaders rOsTableColumnList ) 
+                    --[ 
+                        -- th [ attribute "width" "25px" ]
+                        --     [ text "Priority" ]
+                        -- , th [ attribute "width" "25px" ]
+                        --     [ text "Sev"               ]
+                        -- , th [ attribute "width" "25px" ]
+                        --     [ text "B"               ]
+                        -- , th [ attribute "width" "25px" ]
+                        --     [ text "D"               ]
+                        -- , th [ attribute "width" "25px" ]
+                        --     [ text "Bay"               ]
+                        -- , th [ attribute "width" "75px" ]
+                        --     [ text "RO#"               ]
+                        -- , th [ attribute "width" "30px" ]
+                        --     [ text "Cust#"               ]
+                        -- , th [ attribute "width" "220px" ]
+                        --     [ text "Customer"               ]
+                        -- , th [ attribute "width" "35px" ]
+                        --     [ text "Unit"               ]
+                        -- , th [ attribute "width" "35px" ]
+                        --     [ text "VIN"               ]
+                        -- , th [ attribute "width" "100px" ]
+                        --     [ text "Status"               ]
+                        -- , th []
+                        --     [ text "Updated"               ]
+                        -- , th [ attribute "width" "75px" ]
+                        --     [ text "Tech#1"               ]
+                        -- , th [ attribute "width" "50px" ]
+                        --     [ text "#2"               ]
+                        -- , th [ attribute "width" "25px" ]
+                        --     [ text "DW"               ]
+                        -- , th [ attribute "width" "75px" ]
+                        --     [ text "ETC"               ]
+
+                    --]
+                ]
+            , tbody []  (List.map inProcessRORowView inProcessRORows ) 
+            ]
+    ]
+
+buildROsTableColumnHeaders : String -> Html RPWebMessages.Msg
+buildROsTableColumnHeaders textValue  =
+    th [ attribute "width" ((toString 100) ++ "px") ]
+                    [ text textValue  ]
+
+inProcessRORowView :  RPWebModels.ActionRequiredRO -> Html RPWebMessages.Msg
 inProcessRORowView inProcessRO  =
     let
         -- _ =
