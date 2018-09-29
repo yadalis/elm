@@ -95,8 +95,8 @@ buildROstable inProcessRORows =
             ,table [ class "item-list", id "searchList" ]
             [ thead []
                 [ tr []
-                     --(List.map buildROsTableColumnHeaders rOsTableColumnList)
-                     (List.map buildROsTableColumnHeadersV2 combinedResult)
+                     --(List.map buildROsTableColumnHeadersV2 combinedResult)
+                     (List.map buildROsTableColumnHeadersV2  (List.map2 (\columnName width -> (columnName, width)) rOsTableColumnList rOsTableColumnsWidths))
                      --(List.map buildROsTableColumnHeadersV2 headerWidthPairs)
                     --[ 
                         -- th [ attribute "width" "25px" ]
@@ -138,10 +138,10 @@ buildROstable inProcessRORows =
             ]
     ]
 
--- buildROsTableColumnHeaders : String -> Html RPWebMessages.Msg
--- buildROsTableColumnHeaders textValue  =
---     th [ attribute "width" ((toString 100) ++ "px") ]
---                     [ text textValue  ]
+buildROsTableColumnHeaders : String -> Int -> Html RPWebMessages.Msg
+buildROsTableColumnHeaders textValue widthValue =
+    th [ attribute "width" ((toString widthValue) ++ "px") ]
+                    [ text textValue  ]
 
 buildROsTableColumnHeadersV2 : (String, Int) -> Html RPWebMessages.Msg
 buildROsTableColumnHeadersV2 (textValue, widthValue) =
