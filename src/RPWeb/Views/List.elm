@@ -96,8 +96,13 @@ buildROstable inProcessRORows =
             [ thead []
                 [ tr []
                      --(List.map buildROsTableColumnHeadersV2 combinedResult)
-                     (List.map buildROsTableColumnHeadersV2  (List.map2 (\columnName width -> (columnName, width)) rOsTableColumnList rOsTableColumnsWidths))
-                     --(List.map buildROsTableColumnHeadersV2 headerWidthPairs)
+                    (List.map buildROsTableColumnHeadersV2  (List.map2 (\columnName width -> (columnName, width)) rOsTableColumnList rOsTableColumnsWidths))
+                    
+                    -- rOsTableColumnsWidths
+                    --   |> List.map2 (\columnName width -> (columnName, width)) rOsTableColumnList
+                    --   |> List.map buildROsTableColumnHeadersV2
+                    
+                    --(List.map buildROsTableColumnHeadersV2 headerWidthPairs)
                     --[ 
                         -- th [ attribute "width" "25px" ]
                         --     [ text "Priority" ]
