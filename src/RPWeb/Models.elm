@@ -1,105 +1,78 @@
-module RPWeb.Models exposing (..)
+--module Models exposing (ActionRequiredRO, InProcessRO, CommonROFields, BaseRO)
+module Models exposing (..)
+import InProcessTypes exposing (..)
+--import RemoteData exposing (WebData)
 
-import RemoteData exposing (WebData)
-import RPWeb.RollMsgs as RollMsgs
+type ActionRequiredRO =
+     ActionRequiredRO String String
 
-type alias InProcessRO =
-    { 
-          repairOrderNumber : Int
-        , aggregateRootId: String
-        , customerNumber : Int
-        , customerName : String
-        , branchNumber : Int
-        , branchDepartmentNumber: Int
-        , bay: Maybe String
-        , dashboardPriority: Int
-        , priority: Int
-        , unitNumber: String
-        , unitVehicleIdNumber: String
-        , internalStatus: String
-        , technicians: List Technician
-        , driverWaiting: Bool
-        , isPortalUser: Int
-        , timeZoneDisplay: String
-        , estimatedWorkFinish: Maybe String
+type InProcessRO = 
+     InProcessRO UnitNumber
+
+type alias CommonROFields =
+    {
+        repairOrderNumber : Int
+       ,customerName : String    
     }
 
-type alias ActionRequiredRO =
-    { 
-          repairOrderNumber : Int
-        , aggregateRootId: String
-        , customerNumber : Int
-        , customerName : String
-        , branchNumber : Int
-        , branchDepartmentNumber: Int
-        , bay: Maybe String
-        , dashboardPriority: Int
-        , priority: Int
-        , unitNumber: String
-        , unitVehicleIdNumber: String
-        , internalStatus: String
-        , technicians: List Technician
-        , driverWaiting: Bool
-        , isPortalUser: Int
-        , timeZoneDisplay: String
-        , estimatedWorkFinish: Maybe String
-    }
+type BaseRO a =
+    BaseRO CommonROFields a
+    
+-- type Msg
+--     =  Refresh Int
+--     |  ClickedROView ROViewName
 
-type alias Technician =
-    { 
-         text : String
-        ,value : String
-    }
+-- type ROViewName
+--     = ActionRequiredROView
+--     | InProcessROView
 
-type alias ROListModel anyType =
-    { 
-         roList : WebData ( List anyType )
-        ,ranNumb: Int
-        ,rollMsg: RollMsgs.RollMsg
-    }
 
-actionRequiredInitialModel : ROListModel anyType
-actionRequiredInitialModel =
-    { 
-         roList = RemoteData.Loading
-        ,ranNumb = 5
-        ,rollMsg = RollMsgs.ActionRequiredROsMsg
-    }
 
-inProcessinitialModel : ROListModel anyType
-inProcessinitialModel =
-    { 
-        roList = RemoteData.Loading
-        ,ranNumb = 8
-        ,rollMsg = RollMsgs.InProcessROsMsg
-    }
+-- type UnitNumber =
+--         UnitNumber String
 
--- type alias InProcessROModel =
+-- type UnitVehicleIdNumber =
+--         UnitVehicleIdNumber String
+
+
+
+
+
+
+
+-- type alias RODashboardViewModel anyType =
 --     { 
---         roList : WebData ( List InProcessRO )
+--         url : String
+--         ,ro : BaseRO anyType
 --         ,ranNumb: Int
---         ,rollMsg: RollMsgs.RollMsg
+--         ,selectedROViewName : ROViewName
 --     }
 
--- inProcessinitialModel : InProcessROModel
+-- inProcessinitialModel : RODashboardViewModel InProcessRO
+-- inProcessinitialModel =
+--     { 
+--          --roList = RemoteData.Loading
+--         url = "inprocess >> url"
+--         ,ro = BaseRO ({ repairOrderNumber = 03456, customerName = "Liberty Fruit Company" }) (InProcessRO (UnitNumber "in-process unit# 12345"))
+--         ,ranNumb = 5
+--         ,selectedROViewName = InProcessROView
+--     }
+
+    
+-- actionRequiredInitialModel : RODashboardViewModel ActionRequiredRO
+-- actionRequiredInitialModel =
+--     { 
+--          --roList = RemoteData.Loading
+--         url = ""
+--         ro = {}
+--         ,ranNumb = 5
+--         ,selectedROViewName = ActionRequiredROView
+--     }
+
+-- inProcessinitialModel : ROListModel anyType
 -- inProcessinitialModel =
 --     { 
 --         roList = RemoteData.Loading
---         ,ranNumb = 4
---         ,rollMsg = RollMsgs.InProcessROsMsg
---     }
-
--- type alias ActionRequiredROModel =
---     { 
---         roList : WebData ( List ActionRequiredRO )
---         ,ranNumb: Int
---         ,rollMsg: RollMsgs.RollMsg
---     }
-
--- actionRequiredInitialModel : ActionRequiredROModel
--- actionRequiredInitialModel =
---     { 
---         roList = RemoteData.Loading
---         ,ranNumb = 5
---         ,rollMsg = RollMsgs.ActionRequiredROsMsg
+--         ,ranNumb = 8
+--         ,rollMsg = InProcessROsMsg
 --     }

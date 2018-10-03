@@ -10,9 +10,9 @@
 
 //window.Elm = require('./RPWeb/InProcess.elm');
 
- window.Elm = require('./RPWeb/ActionRequired.elm');
+ //window.Elm = require('./RPWeb/ActionRequired.elm');
 
-//window.Elm = require('./RPWeb/RODashboard.elm');
+window.Elm = require('./RPWeb/RODashboard.elm');
 
 // (function mountElmNode() {
 //     var mountNode = document.getElementById('dashboard-results');    

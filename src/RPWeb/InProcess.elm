@@ -1,28 +1,66 @@
 module InProcess exposing (..)
 
-import Html exposing (program)
-import RPWeb.Msgs as RPWebMessages
-import RPWeb.Models as RPWebModels
-import RPWeb.Update as RPWebUpdate
-import RPWeb.Views.View as RPWebView
-import RPWeb.InProcessCommand as RPWebInProcessCommand
+import Html exposing (..)
+import RPWeb.Models exposing(..)
+import RPWeb.Update exposing(..)
+--import RPWeb.Views.View
+--import RPWeb.ActionRequiredCommand
 
-init : (  RPWebModels.ROListModel RPWebModels.InProcessRO, Cmd RPWebMessages.Msg )
+
+-- init : (String, Cmd Msg)
+-- init =
+--     ("", Cmd.none)
+
+init : ( RODashboardViewModel InProcessRO, Cmd Msg )
 init =
-    ( RPWebModels.  , RPWebInProcessCommand.startRandomInProcessROsFetch )
-    --( RPWebModels.initialModel, Cmd.none ) --  if you dont want to load action required ro list upon page load
+    --( (inProcessinitialModel), startRandomActionRequiredROsFetch )
+    ( (inProcessinitialModel), Cmd.none )
 
-subscriptions :  RPWebModels.ROListModel RPWebModels.InProcessRO -> Sub RPWebMessages.Msg
+subscriptions : (RODashboardViewModel InProcessRO) -> Sub Msg
 subscriptions model =
     Sub.none
 
+
+--subscriptions : (ROListModel ActionRequiredRO) -> Sub Msg
+--subscriptions model =
+    --Sub.none
+
+-- unitNumberValue1 : BaseRO InProcessRO -> String
+-- unitNumberValue1 (BaseRO _ (InProcessRO (UnitNumber unitNumber)  ) ) =
+--         unitNumber
+
+unitNumberValue : UnitNumber -> String
+unitNumberValue (UnitNumber unitNumber) =
+        unitNumber
+
+unitNumber : BaseRO InProcessRO -> UnitNumber
+unitNumber (BaseRO _ (InProcessRO unitNumber) )  =
+        unitNumber
+
+customerName : BaseRO a-> String
+customerName (BaseRO commonFields _) =
+    commonFields.customerName
+
+-- view : RODashboardViewModel InProcessRO -> Html Msg
+-- view model = 
+--     div []
+--     [
+--         div [][text(model.url ++ "  " ++ (customerName model.ro) )]
+
+--         ,div [][text(model.url ++ "  " ++ (unitNumberValue (unitNumber model.ro)) )] -- the below line is same as this
+--         ,div [] [text(model.url ++ "  " ++ (model.ro
+--                                                 |> unitNumber
+--                                                 |> unitNumberValue   ) )]
+--     ]
+
 -- MAIN
 
-main : Program Never  (RPWebModels.ROListModel RPWebModels.InProcessRO) RPWebMessages.Msg
+--main : Program Never (ROListModel RO a) Msg
+main : Program Never (RODashboardViewModel InProcessRO) Msg
 main =
     program
         { init = init
-        , view = RPWebView.view
-        , update = RPWebUpdate.update
+        , view = view
+        , update = update
         , subscriptions = subscriptions
         }
