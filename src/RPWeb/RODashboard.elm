@@ -3,9 +3,12 @@ module RODashboard exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import InProcessTypes exposing (..)
-import InProcessTypeConversionHelpers exposing (..)
-import ActionRequiredTypeConversionHelpers exposing (..)
+import TypesAndConversions.InProcessTypes exposing (..)
+import TypesAndConversions.ActionRequiredTypes exposing (..)
+import TypesAndConversions.InProcessTypeConversionHelpers exposing (..)
+import TypesAndConversions.ActionRequiredTypeConversionHelpers exposing (..)
+import TypesAndConversions.CommonTypeConversionHelpers exposing (..)
+
 import Models exposing(..)
 
 -- Msg
@@ -36,7 +39,7 @@ initialActionRequiredModel =
             { 
                 --roList = RemoteData.Loading
                 url = "action-required  url -> "
-                ,ro = ActionRequired (BaseRO ({ repairOrderNumber = 03456, customerName = "Fed-Ex" }) (ActionRequiredRO "a-c unit# 9999" "a-c VIN# 1NXASDFAWERTASDF"))
+                ,ro = ActionRequired (BaseRO ({ repairOrderNumber = 03456, customerName = "Fed-Ex" }) (ActionRequiredRO (BranchName "a-c Branch Name MHC Olathe") "a-c VIN# 1NXASDFAWERTASDF"))
                 ,ranNumb = 5
                 ,selectedROViewName = ActionRequiredROView
             }
@@ -74,22 +77,27 @@ view model =
                 [
                     div [][text(model.url ++ "  " ++ (customerName ro) )]
 
-                    ,div [][text(model.url ++ "  " ++ (unWrapUnitNumberValue ro) ++ "  " ++  (unWrapVinValue ro))] -- the below line is same as this
+                    -- ,div [][text(model.url ++ "  " ++ (unWrapBranchNameValue ro) ++ "  " ++  (unWrapVinValue ro))] -- the below line is same as this
+                    -- ,div [] [text(model.url ++ "  " ++ (ro
+                    --                                         |> unWrapBranchNameValue )
+                    --                         ++ "  " ++ (ro
+                    --                                         |> unWrapVinValue)
+                    --         )]
+
+                    ,div [][text(model.url ++ "  " ++ (unWrapBranchNameValue (unWrapBranchName ro)) )] -- the below line is same as this
                     ,div [] [text(model.url ++ "  " ++ (ro
-                                                            |> unWrapUnitNumberValue )
-                                            ++ "  " ++ (ro
-                                                            |> unWrapVinValue)
-                            )]
+                                                            |> unWrapBranchName
+                                                            |> unWrapBranchNameValue   ) )]
                 ]
             InProcess ro -> 
                 div []
                 [
                     div [][text(model.url ++ "  " ++ (customerName ro) )]
 
-                    ,div [][text(model.url ++ "  " ++ (unitNumberValue (unitNumber ro)) )] -- the below line is same as this
+                    ,div [][text(model.url ++ "  " ++ (unWrapUnitNumberValue (unWrapUnitNumber ro)) )] -- the below line is same as this
                     ,div [] [text(model.url ++ "  " ++ (ro
-                                                            |> unitNumber
-                                                            |> unitNumberValue   ) )]
+                                                            |> unWrapUnitNumber
+                                                            |> unWrapUnitNumberValue   ) )]
                 ]
     ]
 -- UPDATE

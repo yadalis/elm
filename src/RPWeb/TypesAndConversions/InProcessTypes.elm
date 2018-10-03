@@ -1,4 +1,4 @@
-module InProcessTypes exposing (..)
+module TypesAndConversions.InProcessTypes exposing (..)
 
 type UnitNumber =
         UnitNumber String
