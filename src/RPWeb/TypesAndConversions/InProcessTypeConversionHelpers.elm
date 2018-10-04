@@ -9,5 +9,13 @@ unWrapUnitNumberValue (UnitNumber unitNumberValue) =
         unitNumberValue
 
 unWrapUnitNumber : BaseRO InProcessRO -> UnitNumber
-unWrapUnitNumber (BaseRO _ (InProcessRO unitNumber) )  =
+unWrapUnitNumber (BaseRO _ (InProcessRO unitNumber _) )  =
         unitNumber
+
+unWrapUnitVehicleIdNumberValue : UnitVehicleIdNumber -> String
+unWrapUnitVehicleIdNumberValue (UnitVehicleIdNumber unitVehicleIdNumberValue) =
+        unitVehicleIdNumberValue
+
+unWrapUnitVehicleIdNumber : BaseRO InProcessRO -> UnitVehicleIdNumber
+unWrapUnitVehicleIdNumber (BaseRO _ (InProcessRO _ unitVehicleIdNumber) )  =
+        unitVehicleIdNumber

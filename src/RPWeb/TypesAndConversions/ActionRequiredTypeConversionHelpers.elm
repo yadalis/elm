@@ -11,9 +11,9 @@ unWrapBranchName : BaseRO ActionRequiredRO -> BranchName
 unWrapBranchName (BaseRO _ (ActionRequiredRO branchName _) )  =
         branchName
 
-unWrapVinValue : BaseRO ActionRequiredRO-> String
-unWrapVinValue (BaseRO _ (ActionRequiredRO _ vin) ) =
-        vin
+unWrapBranchLocationValue : BaseRO ActionRequiredRO-> String
+unWrapBranchLocationValue (BaseRO _ (ActionRequiredRO _ branchLocation) ) =
+        branchLocation
 
 -- ACTION-REQUIRED wrappers - this works if we make first arg to ActionRequriedRO as String (BranchName)
 -- unWrapBranchNameValue : BaseRO ActionRequiredRO-> String
