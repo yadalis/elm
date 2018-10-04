@@ -59,11 +59,14 @@ subscriptions model =
 -- VIEW
 view : RODashboardViewModel -> Html Msg
 view model = 
+    div[class "container mx-auto my-auto flex  justify-between"][
     div [][
         br[][]
-        ,button [onClick (ClickedROViewLink ActionRequiredROView) ][text "Refresh action required ro list"]
-        ,span [style [("margin","20px")]][]
-        ,button [ onClick (ClickedROViewLink InProcessROView) ] [text "Refresh in process ro list"]
+        ,button [style[("border", "0.10em solid"),("border-color","wheat"), ("outline","0")],  class "rounded-r-full rounded-l-full h-12 w-64 hover:bg-blue-light", onClick (ClickedROViewLink ActionRequiredROView) ][text "Refresh action required ro list"]
+        ,span [class "p-4"][]
+        ,button [style[("border", "0.10em solid"),("border-color","wheat"), ("outline","0")],  class "h-12 w-64 hover:bg-green-lighter", onClick (ClickedROViewLink InProcessROView) ] [text "Refresh in process ro list"]
+        ,br[][]
+        ,br[][]
         ,br[][]
         ,case model.ro of
             ActionRequired ro -> 
@@ -100,6 +103,7 @@ view model =
                                                             |> unWrapUnitVehicleIdNumber
                                                             |> unWrapUnitVehicleIdNumberValue   ) )]
                 ]
+    ]
     ]
 -- UPDATE
 update : Msg -> RODashboardViewModel -> (RODashboardViewModel, Cmd Msg)
